@@ -16,13 +16,13 @@ namespace chapter5
         {
             int res = 0;
             int tmp = source;
-            int lenght = 0;
+            int lenghtSource = 0;
             while (tmp != 0)
             {
                 tmp = tmp >> 1;
-                lenght++;
+                lenghtSource++;
             }
-            if (j <= i || j - i < lenght)
+            if (j <= i || j - i < lenghtSource)
                 return 0;
             return res;
 
