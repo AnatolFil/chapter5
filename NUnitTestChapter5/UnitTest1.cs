@@ -17,7 +17,9 @@ namespace NUnitTestChapter5
             int res = b.insertNumb(23, 100, 3, 2);
             Assert.AreEqual(0, res);
             res = b.insertNumb(23, 100, 7, 2);
-            //Assert.AreEqual(0, res);
+            Assert.AreEqual(124, res);
+            res = b.insertNumb(56, 245, 7, 2);
+            Assert.AreEqual(245, res);
         }
     }
 }
