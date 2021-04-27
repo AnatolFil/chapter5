@@ -34,13 +34,14 @@ namespace chapter5
             if (lenghtDest < lenghtSource)
                 return 0;
             int reset = 1;
-            int mask = int.MinValue + 1;
-            reset <<= i;
-            int counter = (j - i) + 1;
+            int mask = int.MinValue;
+            reset <<= i;           
+            int counter = (j - i);
             while (counter != 0)
             {
-                int inv = ~reset;
-                dest |= (~reset);
+                reset = reset | mask;
+                reset = ~reset;
+                dest &= reset;
                 reset <<= 1;
                 counter--;
             }
