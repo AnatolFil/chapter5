@@ -6,7 +6,24 @@ namespace chapter5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string a = "123";
+            string b = 123.ToString();
+            Console.WriteLine(a==b);//true
+            Console.WriteLine(a.Equals(b));//true
+
+            object c = "123";
+            object d = 123.ToString();
+
+            Console.WriteLine(c == d);//true
+            Console.WriteLine(c);
+            Console.WriteLine(d);
+            Console.WriteLine(c.Equals(d));//true
+
+            object e = "123";
+            object f = "123";
+
+            Console.WriteLine(e == f);//true
+            Console.WriteLine(e.Equals(f));//true
         }
         
     }
@@ -47,6 +64,23 @@ namespace chapter5
             }
             source <<= i;
             res = dest | source;
+            return res;
+        }
+        public string convertIntoBin(double numb)
+        {
+            string res = "";
+            while(numb != 0 && res.Length <= 32)
+            {
+                numb = numb * 2;
+                if (numb > 1)
+                {
+                    res += "1";
+                    numb = numb - 1;
+                }  
+                else
+                    res += "0";
+            }
+            //numb << 52; 
             return res;
         }
     }
