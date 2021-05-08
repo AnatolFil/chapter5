@@ -79,8 +79,50 @@ namespace chapter5
                 }  
                 else
                     res += "0";
+            } 
+            return res;
+        }
+        public int countBits(int numb)
+        {
+            int res = 0;
+            int mask = 1;
+            int maxBitSeq = 0;
+            for(int j=0;j<32;j++)
+            {
+                int tmp = numb;
+                tmp |= mask;
+                int funcRes = countMaxBits(tmp);
+                if (funcRes > maxBitSeq)
+                    maxBitSeq = funcRes;
+                mask = mask << 1;
             }
-            //numb << 52; 
+            res = maxBitSeq;
+            return res;
+        }
+        private int countMaxBits(int numb)
+        {
+            int res = 0;
+            int maxBitSeq = 0;
+            int shifter2 = 1;
+            int bitSeq = 0;
+            for (int i = 0; i < 32; i++)
+            {
+                int tmp2 = numb & shifter2;
+                if (tmp2 != 0)
+                {
+                    bitSeq++;
+                }
+                else
+                {
+                    if (bitSeq > maxBitSeq)
+                        maxBitSeq = bitSeq;
+                    bitSeq = 0;
+                }
+                if (bitSeq > maxBitSeq)
+                    maxBitSeq = bitSeq;
+                shifter2 = shifter2 << 1;
+            }
+            res = maxBitSeq;
             return res;
         }
     }

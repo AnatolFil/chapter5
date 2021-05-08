@@ -30,5 +30,20 @@ namespace NUnitTestChapter5
             res = b.convertIntoBin(0.657); 
             Assert.AreEqual("101010000011000100100110111010010", res);
         }
+        [Test]
+        public void TestCountBitsForBits()
+        {
+            bits b = new bits();
+            int res = b.countBits(209);
+            Assert.AreEqual(4, res);
+            res = b.countBits(23436755);
+            Assert.AreEqual(7, res);
+            res = b.countBits(1775);
+            Assert.AreEqual(8, res);
+            res = b.countBits(0);
+            Assert.AreEqual(1, res);
+            res = b.countBits(-63);
+            Assert.AreEqual(27, res);
+        }
     }
 }
