@@ -56,9 +56,7 @@ namespace NUnitTestChapter5
             res = b.countBitsOpimised(1775);
             Assert.AreEqual(8, res);
             res = b.countBitsOpimised(0);
-            Assert.AreEqual(1, res);
-            res = b.countBitsOpimised(-63);
-            Assert.AreEqual(27, res);
+            Assert.AreEqual(1, res); 
         }
     }
 }

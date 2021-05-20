@@ -129,38 +129,26 @@ namespace chapter5
         {
             if (numb == 0)
                 return 1;
-            int res = 0;
-            int mask = 1;
-            int maxBits = 0;
-            bool bitFlag = false;
-            for(int i=0;i<32;i++)
+            if (~numb == 0)
+                return 32;
+            int res = 1;
+            int curBits = 0;
+            int prevBits = 0;
+            
+            while(numb != 0)
             {
-                if((numb & mask) != 0)
+                if((numb & 1) == 1)
                 {
-                    maxBits++;
-                }else
-                {
-                    if(bitFlag == false)
-                    {
-                        maxBits++;
-                        bitFlag = true;
-                    }
-                    else
-                    {
-                        bitFlag = false;
-                        if (maxBits > res)
-                            res = maxBits;
-                        maxBits = 0;
-                        if((numb & mask >> 1) != 0)
-                            maxBits++;
-                        i--;
-                        continue;
-                    }
+                    curBits++;
                 }
-                mask = mask << 1;
+                else
+                {
+                    prevBits = (numb & 2) == 0 ? 0 : curBits;
+                    curBits = 0;
+                }
+                numb >>= 1;
+                res = Math.Max(curBits + prevBits + 1, res);
             }
-            if (res == 0 && maxBits != 0)
-                return maxBits;
             return res;
         }
     }
