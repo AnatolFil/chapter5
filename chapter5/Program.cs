@@ -151,5 +151,27 @@ namespace chapter5
             }
             return res;
         }
+        public void findMaxAndMin(int numb, ref int max, ref int min)
+        {
+            if (numb < 0)
+                return;
+            if (numb == 0 || numb == int.MaxValue)
+            {
+                max = min = numb;
+            }
+            min = 0;
+            max = 0;
+            int mask = 1073741824;
+            while (numb != 0)
+            {
+                if((numb & 1) == 1)
+                {
+                    min = (min << 1) | 1;
+                    max = (max >> 1) | mask;
+                }
+                numb >>= 1;
+            }
+
+        }
     }
 }

@@ -58,5 +58,24 @@ namespace NUnitTestChapter5
             res = b.countBitsOpimised(0);
             Assert.AreEqual(1, res); 
         }
+        [Test]
+        public void TestFindMaxAndMinForBits()
+        {
+            bits b = new bits();
+            int max = 0;
+            int min = 0;
+            b.findMaxAndMin(209, ref max, ref min);
+            Assert.AreEqual(2013265920, max);
+            Assert.AreEqual(15, min);
+            b.findMaxAndMin(57939, ref max, ref min);
+            Assert.AreEqual(2139095040, max);
+            Assert.AreEqual(255, min);
+            b.findMaxAndMin(1, ref max, ref min);
+            Assert.AreEqual(1073741824, max);
+            Assert.AreEqual(1, min);
+            b.findMaxAndMin(1073741824, ref max, ref min);
+            Assert.AreEqual(1073741824, max);
+            Assert.AreEqual(1, min);
+        }
     }
 }
