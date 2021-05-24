@@ -161,17 +161,36 @@ namespace chapter5
             }
             min = 0;
             max = 0;
-            int mask = 1073741824;
-            while (numb != 0)
+            int maskForZero = 1;
+            int maskFor1 = 1;
+            int tmp = numb;
+            while (tmp != 0)
             {
-                if((numb & 1) == 1)
+                if((tmp & 1) == 0)
                 {
-                    min = (min << 1) | 1;
-                    max = (max >> 1) | mask;
+                    maskFor1 = maskForZero;
+                    tmp >>= 1;
+                    while (tmp != 0)
+                    {
+                        if((tmp & 1) == 1)
+                        {
+                            maskFor1 <<= 1;
+                            maskFor1 = ~maskFor1;
+                            maskFor1 &= 2147483647;
+                            min = numb | maskForZero;
+                            min = min & maskFor1;
+                            return;
+                        }
+                        tmp >>= 1;
+                        maskFor1 <<= 1;
+                        maskForZero <<= 1;
+                    }
+                    min = numb;
                 }
-                numb >>= 1;
+                tmp >>= 1;
+                maskForZero <<= 1;
             }
-
+            min = numb;
         }
     }
 }
