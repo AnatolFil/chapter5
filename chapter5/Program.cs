@@ -162,35 +162,55 @@ namespace chapter5
             min = 0;
             max = 0;
             int maskForZero = 1;
-            int maskFor1 = 1;
+            int maskFor1 = 0;
+            int maskForZeroMax = 0;
+            int maskFor1Max = 0;
             int tmp = numb;
+            int i = 0;
             while (tmp != 0)
             {
                 if((tmp & 1) == 0)
                 {
-                    maskFor1 = maskForZero;
-                    tmp >>= 1;
-                    while (tmp != 0)
+                    if(maskForZero == 0 && maskFor1 == 0)
                     {
-                        if((tmp & 1) == 1)
-                        {
-                            maskFor1 <<= 1;
-                            maskFor1 = ~maskFor1;
-                            maskFor1 &= 2147483647;
-                            min = numb | maskForZero;
-                            min = min & maskFor1;
-                            return;
-                        }
-                        tmp >>= 1;
-                        maskFor1 <<= 1;
-                        maskForZero <<= 1;
+                        maskForZero = 1;
+                        if (i > 1)
+                            maskForZero <<= i;
                     }
-                    min = numb;
+                    //maskFor1 = maskForZero;
+                    //tmp >>= 1;
+                    //while (tmp != 0)
+                    //{
+                    //    if((tmp & 1) == 1)
+                    //    {
+                    //        maskFor1 <<= 1;
+                    //        maskFor1 = ~maskFor1;
+                    //        maskFor1 &= 2147483647;
+                    //        min = numb | maskForZero;
+                    //        min = min & maskFor1;
+                    //        return;
+                    //    }
+                    //    tmp >>= 1;
+                    //    maskFor1 <<= 1;
+                    //    maskForZero <<= 1;
+                    //}
+                    //min = numb;
                 }
+                else
+                {
+                    if(maskForZero != 0 && maskFor1 == 0)
+                    {
+                        maskFor1 = 1;
+                        maskFor1 <<= i;
+                    }
+                }
+                i++;
                 tmp >>= 1;
-                maskForZero <<= 1;
             }
-            min = numb;
+            maskFor1 = ~maskFor1;
+            maskFor1 &= 2147483647;
+            min = numb | maskForZero;
+            min = min & maskFor1;
         }
     }
 }
