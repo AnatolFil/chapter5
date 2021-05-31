@@ -65,17 +65,20 @@ namespace NUnitTestChapter5
             int max = 0;
             int min = 0;
             b.findMaxAndMin(910, ref max, ref min);
-            //Assert.AreEqual(2013265920, max);
+            Assert.AreEqual(918, max);
             Assert.AreEqual(909, min);
             b.findMaxAndMin(57939, ref max, ref min);
-            //Assert.AreEqual(2139095040, max);
+            Assert.AreEqual(57941, max);
             Assert.AreEqual(57931, min);
             b.findMaxAndMin(1, ref max, ref min);
-            //Assert.AreEqual(1073741824, max);
+            Assert.AreEqual(1, max);
             Assert.AreEqual(1, min);
             b.findMaxAndMin(1073741824, ref max, ref min);
-            //Assert.AreEqual(1073741824, max);
+            Assert.AreEqual(1073741824, max);
             Assert.AreEqual(536870912, min);
+            b.findMaxAndMin(180765151, ref max, ref min);
+            Assert.AreEqual(180765167, max);
+            Assert.AreEqual(180765119, min);
         }
     }
 }
