@@ -226,5 +226,9 @@ namespace chapter5
             }
             return res;
         }
+        public int chageBitsPlacementEasy(int numb)
+        {
+            return ((numb & 0xAAAAAAA) >> 1) | ((numb & 0x55555555) << 1);
+        }
     }
 }

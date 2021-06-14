@@ -91,5 +91,16 @@ namespace NUnitTestChapter5
             res = b.chageBitsPlacement(31546);
             Assert.AreEqual(46901, res);//1011 0111 0011 0101
         }
+        [Test]
+        public void TestChageBitsPlacementEasyForBits()
+        {
+            bits b = new bits();
+            int res = 0;
+            res = b.chageBitsPlacementEasy(213);
+            Assert.AreEqual(234, res);
+
+            res = b.chageBitsPlacementEasy(31546);
+            Assert.AreEqual(46901, res);//1011 0111 0011 0101
+        }
     }
 }
