@@ -228,7 +228,7 @@ namespace chapter5
         }
         public int chageBitsPlacementEasy(int numb)
         {
-            return ((numb & 0xAAAAAAA) >> 1) | ((numb & 0x55555555) << 1);
+            return ((numb & unchecked((int)0xAAAAAAAA)) >> 1) | ((numb & 0x55555555) << 1);
         }
     }
 }
