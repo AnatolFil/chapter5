@@ -80,5 +80,16 @@ namespace NUnitTestChapter5
             Assert.AreEqual(180765167, max);
             Assert.AreEqual(180765119, min);
         }
+        [Test]
+        public void TestChageBitsPlacementForBits()
+        {
+            bits b = new bits();
+            int res = 0;
+            res = b.chageBitsPlacement(213);
+            Assert.AreEqual(234,res);
+
+            res = b.chageBitsPlacement(31546);
+            Assert.AreEqual(46901, res);//1011 0111 0011 0101
+        }
     }
 }

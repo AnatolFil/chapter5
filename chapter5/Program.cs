@@ -206,8 +206,25 @@ namespace chapter5
                 }
                 i++;
                 tmp >>= 1;
+            }            
+        }
+        public int chageBitsPlacement(int numb)
+        {
+            int res = 0;
+            int fastPointer = 1 << 1;
+            int slowPointer = 1;
+            while(fastPointer != 0)
+            {
+                int tmp = (numb & slowPointer);
+                tmp <<= 1;
+                res = res | tmp;
+                tmp = (numb & fastPointer);
+                tmp >>= 1;
+                res = res | tmp;
+                fastPointer <<= 2;
+                slowPointer <<= 2;
             }
-            
+            return res;
         }
     }
 }
